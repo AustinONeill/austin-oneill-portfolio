@@ -10,21 +10,18 @@ const PILLS = [
   'Full-stack development (React, Node.js)',
 ]
 
-const CARD_W = 280 // px — fully expanded card width
+const CARD_W = 280
 
 export default function HybridProfile() {
   const [pillRef, pillsInView] = useInView<HTMLDivElement>({ threshold: 0.1 })
   const [scrollRef, progress] = useScrollProgress<HTMLDivElement>(0.45)
 
-  // Interpolated values driven by scroll progress
-  const cardWidth = Math.round(progress * CARD_W)
+  const cardWidth  = Math.round(progress * CARD_W)
   const cardLeftX  = Math.round((1 - progress) * -CARD_W)
-  const cardRightX = Math.round((1 - progress) *  CARD_W)
 
   return (
     <section id="profile" className="bg-surface-muted overflow-hidden py-20 sm:py-28">
 
-      {/* Heading — constrained */}
       <div className="container-max mb-10">
         <span className="text-teal font-mono text-sm font-medium tracking-wide uppercase">What I do</span>
         <h2 className="text-3xl sm:text-4xl font-bold text-ink mt-2">
@@ -32,10 +29,9 @@ export default function HybridProfile() {
         </h2>
       </div>
 
-      {/* Three-column scroll-driven layout */}
       <div ref={scrollRef} className="flex items-stretch w-full">
 
-        {/* ── Left card — Damatex unit ── */}
+        {/* Left card — Damatex, slides from left */}
         <div
           className="flex-shrink-0 overflow-hidden hidden md:block"
           style={{ width: cardWidth }}
@@ -50,11 +46,9 @@ export default function HybridProfile() {
           </div>
         </div>
 
-        {/* ── Centre: text ── */}
+        {/* Centre text */}
         <div className="flex-1 min-w-0 px-6 sm:px-10 lg:px-14 flex flex-col justify-center">
           <div ref={pillRef} className="grid md:grid-cols-2 gap-10 items-start max-w-4xl mx-auto w-full">
-
-            {/* Narrative */}
             <div className="space-y-4 text-ink-muted leading-relaxed">
               <p>
                 I'm a controls technician specializing in Damatex environmental automation for
@@ -76,7 +70,6 @@ export default function HybridProfile() {
               </p>
             </div>
 
-            {/* Pills */}
             <div className="space-y-3">
               <p className="text-xs font-mono text-ink-subtle uppercase tracking-widest mb-4">
                 Where I bring leverage
@@ -99,39 +92,12 @@ export default function HybridProfile() {
             </div>
           </div>
         </div>
-
-        {/* ── Right card — MTL Cannabis jar ── */}
-        <div
-          className="flex-shrink-0 overflow-hidden hidden md:block"
-          style={{ width: cardWidth }}
-        >
-          <div
-            style={{
-              width: CARD_W,
-              transform: `translateX(${cardRightX}px)`,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              height: 480,
-              background: 'transparent',
-            }}
-          >
-            <img
-              src="/assets/mtl-jar.png"
-              alt="MTL Cannabis Gas N' Up"
-              className="w-full h-full object-contain"
-            />
-          </div>
-        </div>
       </div>
 
-      {/* Mobile fallback — stacked below content */}
-      <div className="md:hidden flex gap-4 mt-10 px-4">
-        <div className="flex-1 rounded-2xl overflow-hidden shadow-md">
-          <img src="/assets/damatex-left.jpg" alt="Damatex control unit" className="w-full h-44 object-cover" />
-        </div>
-        <div className="flex-1 flex items-center justify-center bg-transparent p-2">
-          <img src="/assets/mtl-jar.png" alt="MTL Cannabis product" className="w-full h-44 object-contain" />
+      {/* Mobile */}
+      <div className="md:hidden mt-10 px-4">
+        <div className="rounded-2xl overflow-hidden shadow-md">
+          <img src="/assets/damatex-left.jpg" alt="Damatex control unit" className="w-full h-48 object-cover" />
         </div>
       </div>
     </section>

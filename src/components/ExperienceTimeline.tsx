@@ -1,4 +1,5 @@
 import { useInView } from '@/hooks/useInView'
+import { useScrollProgress } from '@/hooks/useScrollProgress'
 
 interface Role {
   title: string
@@ -7,6 +8,10 @@ interface Role {
   period: string
   bullets: string[]
   tags: string[]
+  image: string
+  imageAlt: string
+  /** true = image enters from right, false = from left */
+  imageFromRight: boolean
 }
 
 const ROLES: Role[] = [
@@ -15,6 +20,9 @@ const ROLES: Role[] = [
     company: 'MTL Cannabis (Abba Medix Corp)',
     location: 'Montréal, QC',
     period: 'Oct 2025 – Present',
+    image: '/assets/mtl-jar.png',
+    imageAlt: 'MTL Cannabis product',
+    imageFromRight: true,
     bullets: [
       'Design and implement Damatex environmental control systems across multiple grow rooms — irrigation, HVAC, CO₂, and lighting.',
       'Build stage-based lighting control logic using time and day counters for pre-veg, veg, and flower cycles.',
@@ -30,6 +38,9 @@ const ROLES: Role[] = [
     company: 'MTL Cannabis (Abba Medix Corp)',
     location: 'Pickering, ON',
     period: 'Nov 2024 – Oct 2025',
+    image: '/assets/abba-medix.jpg',
+    imageAlt: 'Abba Medix Corp',
+    imageFromRight: false,
     bullets: [
       'Supported desktops, printers, cameras, and access control systems across the facility.',
       'Built small software prototypes to streamline internal workflows.',
@@ -44,6 +55,9 @@ const ROLES: Role[] = [
     company: 'Indiva',
     location: 'London, ON',
     period: 'Oct 2022 – Nov 2023',
+    image: '/assets/indiva.jpg',
+    imageAlt: 'Indiva — Our Roots Run Deep',
+    imageFromRight: true,
     bullets: [
       'Supported high-volume production of vape cartridges and edibles.',
       'Achieved record shift output (3,000+ cartridges) while maintaining quality and compliance standards.',
@@ -53,20 +67,42 @@ const ROLES: Role[] = [
   },
 ]
 
-function RoleCard({ role, index }: { role: Role; index: number }) {
-  const [ref, isInView] = useInView<HTMLDivElement>({ threshold: 0.1 })
+function RoleCard({ role }: { role: Role }) {
+  const [textRef, textInView] = useInView<HTMLDivElement>({ threshold: 0.1 })
+  const [imgRef, imgProgress] = useScrollProgress<HTMLDivElement>(0.55)
+
+  const tx = Math.round((1 - imgProgress) * (role.imageFromRight ? 90 : -90))
+  const opacity = 0.15 + imgProgress * 0.85
+
+  const imageEl = (
+    <div
+      ref={imgRef}
+      className="hidden md:flex items-center justify-center flex-shrink-0 w-56 lg:w-64"
+      style={{
+        transform: `translateX(${tx}px)`,
+        opacity,
+      }}
+    >
+      <img
+        src={role.image}
+        alt={role.imageAlt}
+        className="w-full rounded-2xl object-contain shadow-lg"
+        style={{ maxHeight: 280 }}
+      />
+    </div>
+  )
 
   return (
-    <div className="relative pl-8 pb-12 last:pb-0">
-      {/* Timeline dot */}
-      <div className="absolute left-0 top-1 w-3 h-3 rounded-full bg-teal border-2 border-surface ring-4 ring-teal/10" aria-hidden="true" />
+    <div className="flex items-center gap-8 lg:gap-12 mb-20 last:mb-0">
+      {/* Image left side */}
+      {!role.imageFromRight && imageEl}
 
+      {/* Text content */}
       <div
-        ref={ref}
-        className={`transition-all duration-600 ${
-          isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+        ref={textRef}
+        className={`flex-1 min-w-0 transition-all duration-700 ${
+          textInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
         }`}
-        style={{ transitionDelay: `${index * 80}ms` }}
       >
         {/* Header */}
         <div className="flex flex-wrap items-start justify-between gap-2 mb-3">
@@ -90,8 +126,6 @@ function RoleCard({ role, index }: { role: Role; index: number }) {
               </li>
             ))}
           </ul>
-
-          {/* Tags */}
           <div className="flex flex-wrap gap-2 pt-3 border-t border-slate-50">
             {role.tags.map((tag) => (
               <span
@@ -103,24 +137,35 @@ function RoleCard({ role, index }: { role: Role; index: number }) {
             ))}
           </div>
         </div>
+
+        {/* Mobile image */}
+        <div className="md:hidden mt-4 flex justify-center">
+          <img
+            src={role.image}
+            alt={role.imageAlt}
+            className="h-36 w-auto rounded-2xl object-contain"
+          />
+        </div>
       </div>
+
+      {/* Image right side */}
+      {role.imageFromRight && imageEl}
     </div>
   )
 }
 
 export default function ExperienceTimeline() {
   return (
-    <section id="experience" className="section-padding">
+    <section id="experience" className="section-padding overflow-hidden">
       <div className="container-max">
         <div className="mb-12">
           <span className="text-teal font-mono text-sm font-medium tracking-wide uppercase">Career</span>
           <h2 className="text-3xl sm:text-4xl font-bold text-ink mt-2">Experience</h2>
         </div>
 
-        {/* Timeline */}
-        <div className="relative border-l-2 border-teal/15 ml-1.5">
-          {ROLES.map((role, i) => (
-            <RoleCard key={`${role.company}-${role.period}`} role={role} index={i} />
+        <div>
+          {ROLES.map((role) => (
+            <RoleCard key={`${role.company}-${role.period}`} role={role} />
           ))}
         </div>
       </div>
