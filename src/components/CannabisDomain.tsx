@@ -29,7 +29,7 @@ export default function CannabisDomain() {
   const [ref, isInView] = useInView<HTMLDivElement>({ threshold: 0.1 })
 
   return (
-    <section id="cannabis" className="section-padding bg-surface-dark/96">
+    <section id="cannabis" className="section-padding bg-surface-dark">
       <div
         ref={ref}
         className={`container-max transition-all duration-700 ${
@@ -52,7 +52,7 @@ export default function CannabisDomain() {
 
         <div className="grid md:grid-cols-2 gap-8">
           {COLUMNS.map((col) => (
-            <div key={col.heading} className="bg-surface-dark-card/96 rounded-2xl p-6 border border-white/5">
+            <div key={col.heading} className="bg-surface-dark-card rounded-2xl p-6 border border-white/5">
               <div className="flex items-center gap-2 mb-5">
                 <div className="w-1 h-5 rounded-full bg-teal" aria-hidden="true" />
                 <h3 className="font-bold text-white">{col.heading}</h3>

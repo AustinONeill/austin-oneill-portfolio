@@ -51,7 +51,7 @@ export default function Nav() {
           <a
             href="/assets/austin-oneill-resume.pdf"
             download
-            className="ml-2 px-4 py-2 rounded-lg bg-teal/96 text-white text-sm font-semibold hover:bg-teal-dark/96 transition-colors"
+            className="ml-2 px-4 py-2 rounded-lg bg-teal text-white text-sm font-semibold hover:bg-teal-dark transition-colors"
           >
             Download Resume
           </a>
@@ -92,7 +92,7 @@ export default function Nav() {
           <a
             href="/assets/austin-oneill-resume.pdf"
             download
-            className="mt-1 px-4 py-2 rounded-lg bg-teal/96 text-white text-sm font-semibold text-center hover:bg-teal-dark/96 transition-colors"
+            className="mt-1 px-4 py-2 rounded-lg bg-teal text-white text-sm font-semibold text-center hover:bg-teal-dark transition-colors"
           >
             Download Resume
           </a>
