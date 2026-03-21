@@ -4,7 +4,7 @@ import ParticleBackground from './ParticleBackground'
 // Stylized dashboard mock for CannTycoon card
 function DashboardMock() {
   return (
-    <div className="rounded-xl bg-surface-dark-card border border-teal/10 p-4 font-mono text-xs">
+    <div className="rounded-xl bg-surface-dark-card/96 border border-teal/10 p-4 font-mono text-xs">
       <div className="flex items-center justify-between mb-3">
         <span className="text-teal font-medium">GROW ROOM 04 · FLOWER</span>
         <span className="w-2 h-2 rounded-full bg-teal animate-pulse" aria-hidden="true" />
@@ -110,7 +110,7 @@ export default function Projects() {
                   href="https://github.com/AustinONeill"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-xl bg-teal text-white text-sm font-semibold hover:bg-teal-dark transition-colors"
+                  className="px-4 py-2 rounded-xl bg-teal/96 text-white text-sm font-semibold hover:bg-teal-dark/96 transition-colors"
                 >
                   View on GitHub
                 </a>

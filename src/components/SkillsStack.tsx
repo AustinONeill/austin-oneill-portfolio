@@ -45,7 +45,7 @@ function SkillCard({ group, delay }: { group: SkillGroup; delay: number }) {
       ref={ref}
       className={`rounded-2xl border p-5 transition-all duration-500 ${
         group.accent
-          ? 'bg-surface-dark border-teal/20 text-white'
+          ? 'bg-surface-dark/96 border-teal/20 text-white'
           : 'bg-surface-muted border-slate-100 hover:border-teal/20'
       } ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
       style={{ transitionDelay: `${delay}ms` }}

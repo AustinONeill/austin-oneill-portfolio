@@ -56,7 +56,7 @@ export default function Hero() {
         <div className="flex flex-wrap items-center gap-4">
           <a
             href="#experience"
-            className="px-6 py-3 rounded-xl bg-teal text-white font-semibold hover:bg-teal-dark transition-colors shadow-sm shadow-teal/30"
+            className="px-6 py-3 rounded-xl bg-teal/96 text-white font-semibold hover:bg-teal-dark/96 transition-colors shadow-sm shadow-teal/30"
           >
             View Experience
           </a>
