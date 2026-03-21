@@ -10,7 +10,6 @@ interface Role {
   tags: string[]
   image: string
   imageAlt: string
-  /** true = image enters from right, false = from left */
   imageFromRight: boolean
 }
 
@@ -21,7 +20,7 @@ const ROLES: Role[] = [
     location: 'Montréal, QC',
     period: 'Oct 2025 – Present',
     image: '/assets/mtl-jar.png',
-    imageAlt: 'MTL Cannabis product',
+    imageAlt: 'MTL Cannabis',
     imageFromRight: true,
     bullets: [
       'Design and implement Damatex environmental control systems across multiple grow rooms — irrigation, HVAC, CO₂, and lighting.',
@@ -38,7 +37,7 @@ const ROLES: Role[] = [
     company: 'MTL Cannabis (Abba Medix Corp)',
     location: 'Pickering, ON',
     period: 'Nov 2024 – Oct 2025',
-    image: '/assets/abba-medix.jpg',
+    image: '/assets/abba-medix.png',
     imageAlt: 'Abba Medix Corp',
     imageFromRight: false,
     bullets: [
@@ -55,7 +54,7 @@ const ROLES: Role[] = [
     company: 'Indiva',
     location: 'London, ON',
     period: 'Oct 2022 – Nov 2023',
-    image: '/assets/indiva.jpg',
+    image: '/assets/indiva.png',
     imageAlt: 'Indiva — Our Roots Run Deep',
     imageFromRight: true,
     bullets: [
@@ -67,18 +66,23 @@ const ROLES: Role[] = [
   },
 ]
 
+const IMG_COL = 220 // fixed image column width in px
+
 function RoleCard({ role }: { role: Role }) {
   const [textRef, textInView] = useInView<HTMLDivElement>({ threshold: 0.1 })
   const [imgRef, imgProgress] = useScrollProgress<HTMLDivElement>(0.55)
 
-  const tx = Math.round((1 - imgProgress) * (role.imageFromRight ? 90 : -90))
-  const opacity = 0.15 + imgProgress * 0.85
+  // Image slides from outside its column
+  const tx = Math.round((1 - imgProgress) * (role.imageFromRight ? IMG_COL + 40 : -(IMG_COL + 40)))
+  const opacity = Math.max(0, imgProgress * 1.4 - 0.1) // slight lag before fade starts
 
-  const imageEl = (
+  const imageNode = (
     <div
       ref={imgRef}
-      className="hidden md:flex items-center justify-center flex-shrink-0 w-56 lg:w-64"
+      className="hidden md:flex items-center justify-center"
       style={{
+        width: IMG_COL,
+        flexShrink: 0,
         transform: `translateX(${tx}px)`,
         opacity,
       }}
@@ -86,25 +90,28 @@ function RoleCard({ role }: { role: Role }) {
       <img
         src={role.image}
         alt={role.imageAlt}
-        className="w-full rounded-2xl object-contain shadow-lg"
-        style={{ maxHeight: 280 }}
+        className="object-contain w-full"
+        style={{ height: IMG_COL, maxHeight: IMG_COL }}
       />
     </div>
   )
 
   return (
-    <div className="flex items-center gap-8 lg:gap-12 mb-20 last:mb-0">
-      {/* Image left side */}
-      {!role.imageFromRight && imageEl}
+    <div className="flex items-center gap-6 lg:gap-10 mb-20 last:mb-0">
 
-      {/* Text content */}
+      {/* Left image slot — always reserves space; only populated when imageFromRight=false */}
+      {role.imageFromRight
+        ? <div className="hidden md:block flex-shrink-0" style={{ width: IMG_COL }} />
+        : imageNode
+      }
+
+      {/* Center text — always the same position */}
       <div
         ref={textRef}
         className={`flex-1 min-w-0 transition-all duration-700 ${
           textInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
         }`}
       >
-        {/* Header */}
         <div className="flex flex-wrap items-start justify-between gap-2 mb-3">
           <div>
             <h3 className="font-bold text-ink text-lg leading-tight">{role.title}</h3>
@@ -116,7 +123,6 @@ function RoleCard({ role }: { role: Role }) {
           </div>
         </div>
 
-        {/* Card */}
         <div className="bg-surface border border-slate-100 rounded-2xl p-5 hover:border-teal/20 hover:shadow-sm transition-all">
           <ul className="space-y-2 mb-4">
             {role.bullets.map((bullet) => (
@@ -128,28 +134,24 @@ function RoleCard({ role }: { role: Role }) {
           </ul>
           <div className="flex flex-wrap gap-2 pt-3 border-t border-slate-50">
             {role.tags.map((tag) => (
-              <span
-                key={tag}
-                className="px-2 py-0.5 rounded-full bg-slate-50 border border-slate-100 text-xs font-mono text-ink-subtle"
-              >
+              <span key={tag} className="px-2 py-0.5 rounded-full bg-slate-50 border border-slate-100 text-xs font-mono text-ink-subtle">
                 {tag}
               </span>
             ))}
           </div>
         </div>
 
-        {/* Mobile image */}
+        {/* Mobile: image below card */}
         <div className="md:hidden mt-4 flex justify-center">
-          <img
-            src={role.image}
-            alt={role.imageAlt}
-            className="h-36 w-auto rounded-2xl object-contain"
-          />
+          <img src={role.image} alt={role.imageAlt} className="h-32 w-auto object-contain" />
         </div>
       </div>
 
-      {/* Image right side */}
-      {role.imageFromRight && imageEl}
+      {/* Right image slot */}
+      {role.imageFromRight
+        ? imageNode
+        : <div className="hidden md:block flex-shrink-0" style={{ width: IMG_COL }} />
+      }
     </div>
   )
 }
