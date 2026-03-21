@@ -16,8 +16,9 @@ export default function HybridProfile() {
   const [pillRef, pillsInView] = useInView<HTMLDivElement>({ threshold: 0.1 })
   const [scrollRef, progress] = useScrollProgress<HTMLDivElement>(0.45)
 
-  const cardWidth  = Math.round(progress * CARD_W)
-  const cardLeftX  = Math.round((1 - progress) * -CARD_W)
+  const cardWidth = Math.round(progress * CARD_W)
+  const leftTx    = Math.round((1 - progress) * -CARD_W)
+  const rightTx   = Math.round((1 - progress) *  CARD_W)
 
   return (
     <section id="profile" className="bg-surface-muted overflow-hidden py-20 sm:py-28">
@@ -36,12 +37,12 @@ export default function HybridProfile() {
           className="flex-shrink-0 overflow-hidden hidden md:block"
           style={{ width: cardWidth }}
         >
-          <div style={{ width: CARD_W, transform: `translateX(${cardLeftX}px)` }}>
+          <div style={{ width: CARD_W, transform: `translateX(${leftTx}px)` }}>
             <img
               src="/assets/damatex-left.jpg"
               alt="Damatex environmental control unit in cannabis grow room"
               className="w-full object-cover"
-              style={{ height: 480 }}
+              style={{ height: CARD_W }}
             />
           </div>
         </div>
@@ -92,12 +93,30 @@ export default function HybridProfile() {
             </div>
           </div>
         </div>
+
+        {/* Right card — code snippet, slides from right */}
+        <div
+          className="flex-shrink-0 overflow-hidden hidden md:block"
+          style={{ width: cardWidth }}
+        >
+          <div style={{ width: CARD_W, transform: `translateX(${rightTx}px)` }}>
+            <img
+              src="/assets/code-snippet.png"
+              alt="Python automation code for Damatex grow room control"
+              className="w-full object-cover"
+              style={{ height: CARD_W }}
+            />
+          </div>
+        </div>
       </div>
 
       {/* Mobile */}
-      <div className="md:hidden mt-10 px-4">
-        <div className="rounded-2xl overflow-hidden shadow-md">
-          <img src="/assets/damatex-left.jpg" alt="Damatex control unit" className="w-full h-48 object-cover" />
+      <div className="md:hidden flex gap-3 mt-10 px-4">
+        <div className="flex-1 rounded-2xl overflow-hidden shadow-md">
+          <img src="/assets/damatex-left.jpg" alt="Damatex control unit" className="w-full h-40 object-cover" />
+        </div>
+        <div className="flex-1 rounded-2xl overflow-hidden shadow-md">
+          <img src="/assets/code-snippet.png" alt="Code snippet" className="w-full h-40 object-cover" />
         </div>
       </div>
     </section>
