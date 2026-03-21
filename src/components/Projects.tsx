@@ -1,4 +1,5 @@
 import { useInView } from '@/hooks/useInView'
+import ParticleBackground from './ParticleBackground'
 
 // Stylized dashboard mock for CannTycoon card
 function DashboardMock() {
@@ -60,63 +61,66 @@ export default function Projects() {
           }`}
         >
           {/* CannTycoon — dark card */}
-          <div className="group relative bg-surface-dark rounded-3xl p-6 hover:-translate-y-1 hover:shadow-xl hover:shadow-teal/10 transition-all duration-300 flex flex-col">
-            <div className="flex items-start justify-between mb-4">
-              <div>
-                <span className="text-xs font-mono text-teal uppercase tracking-widest">Featured</span>
-                <h3 className="text-xl font-bold text-white mt-1">CannTycoon</h3>
-                <p className="text-ink-subtle text-sm mt-0.5">Controls Simulation & Dashboard</p>
-              </div>
-              <span className="px-2 py-1 rounded-lg bg-teal/10 text-teal text-xs font-mono border border-teal/20">
-                WIP
-              </span>
-            </div>
-
-            <p className="text-slate-400 text-sm leading-relaxed mb-4">
-              A simulation system modeling cannabis plant growth, environmental variables, and
-              resource management — built on the same logic structures used in real Damatex
-              control systems. A testbed for feedback loops, fault detection, and state-based
-              validation in software.
-            </p>
-
-            <DashboardMock />
-
-            <ul className="mt-4 space-y-1.5">
-              {[
-                'Temperature, humidity, light, CO₂, and stress interaction logic with validation',
-                'Fault detection and corrective response simulation',
-                'Sandbox for testing control strategies before real-facility deployment',
-              ].map((point) => (
-                <li key={point} className="flex gap-2 text-xs text-slate-400">
-                  <span className="text-teal mt-0.5 flex-shrink-0">▸</span>
-                  {point}
-                </li>
-              ))}
-            </ul>
-
-            <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-white/5">
-              {['TypeScript', 'React', 'Simulation', 'Controls Logic'].map((tag) => (
-                <span key={tag} className="px-2 py-0.5 rounded-full bg-white/5 text-teal-light text-xs font-mono border border-teal/10">
-                  {tag}
+          <div className="group relative bg-surface-dark rounded-3xl p-6 hover:-translate-y-1 hover:shadow-xl hover:shadow-teal/10 transition-all duration-300 flex flex-col overflow-hidden">
+            <ParticleBackground density={3} color="#14b8a6" speed={0.5} linkDistance={100} />
+            <div className="relative z-10 flex flex-col flex-1">
+              <div className="flex items-start justify-between mb-4">
+                <div>
+                  <span className="text-xs font-mono text-teal uppercase tracking-widest">Featured</span>
+                  <h3 className="text-xl font-bold text-white mt-1">CannTycoon</h3>
+                  <p className="text-ink-subtle text-sm mt-0.5">Controls Simulation & Dashboard</p>
+                </div>
+                <span className="px-2 py-1 rounded-lg bg-teal/10 text-teal text-xs font-mono border border-teal/20">
+                  WIP
                 </span>
-              ))}
-            </div>
+              </div>
 
-            <div className="flex gap-3 mt-5">
-              <a
-                href="https://github.com/AustinONeill"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-2 rounded-xl bg-teal text-white text-sm font-semibold hover:bg-teal-dark transition-colors"
-              >
-                View on GitHub
-              </a>
-              <button
-                disabled
-                className="px-4 py-2 rounded-xl border border-white/10 text-slate-500 text-sm font-semibold cursor-not-allowed"
-              >
-                Live Demo (soon)
-              </button>
+              <p className="text-slate-400 text-sm leading-relaxed mb-4">
+                A simulation system modeling cannabis plant growth, environmental variables, and
+                resource management — built on the same logic structures used in real Damatex
+                control systems. A testbed for feedback loops, fault detection, and state-based
+                validation in software.
+              </p>
+
+              <DashboardMock />
+
+              <ul className="mt-4 space-y-1.5">
+                {[
+                  'Temperature, humidity, light, CO₂, and stress interaction logic with validation',
+                  'Fault detection and corrective response simulation',
+                  'Sandbox for testing control strategies before real-facility deployment',
+                ].map((point) => (
+                  <li key={point} className="flex gap-2 text-xs text-slate-400">
+                    <span className="text-teal mt-0.5 flex-shrink-0">▸</span>
+                    {point}
+                  </li>
+                ))}
+              </ul>
+
+              <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-white/5">
+                {['TypeScript', 'React', 'Simulation', 'Controls Logic'].map((tag) => (
+                  <span key={tag} className="px-2 py-0.5 rounded-full bg-white/5 text-teal-light text-xs font-mono border border-teal/10">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <div className="flex gap-3 mt-5">
+                <a
+                  href="https://github.com/AustinONeill"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 rounded-xl bg-teal text-white text-sm font-semibold hover:bg-teal-dark transition-colors"
+                >
+                  View on GitHub
+                </a>
+                <button
+                  disabled
+                  className="px-4 py-2 rounded-xl border border-white/10 text-slate-500 text-sm font-semibold cursor-not-allowed"
+                >
+                  Live Demo (soon)
+                </button>
+              </div>
             </div>
           </div>
 
