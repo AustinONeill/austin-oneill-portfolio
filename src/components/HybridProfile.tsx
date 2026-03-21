@@ -1,4 +1,5 @@
 import { useInView } from '@/hooks/useInView'
+import { useScrollProgress } from '@/hooks/useScrollProgress'
 
 const PILLS = [
   'Environmental automation (Damatex)',
@@ -9,17 +10,21 @@ const PILLS = [
   'Full-stack development (React, Node.js)',
 ]
 
-const CARD_W = 260 // px — card width at full expansion
+const CARD_W = 280 // px — fully expanded card width
 
 export default function HybridProfile() {
-  const [ref, isInView] = useInView<HTMLDivElement>({ threshold: 0.15 })
+  const [pillRef, pillsInView] = useInView<HTMLDivElement>({ threshold: 0.1 })
+  const [scrollRef, progress] = useScrollProgress<HTMLDivElement>(0.45)
 
-  const ease = '0.9s cubic-bezier(0.22, 1, 0.36, 1)'
+  // Interpolated values driven by scroll progress
+  const cardWidth = Math.round(progress * CARD_W)
+  const cardLeftX  = Math.round((1 - progress) * -CARD_W)
+  const cardRightX = Math.round((1 - progress) *  CARD_W)
 
   return (
     <section id="profile" className="bg-surface-muted overflow-hidden py-20 sm:py-28">
 
-      {/* Section heading — constrained */}
+      {/* Heading — constrained */}
       <div className="container-max mb-10">
         <span className="text-teal font-mono text-sm font-medium tracking-wide uppercase">What I do</span>
         <h2 className="text-3xl sm:text-4xl font-bold text-ink mt-2">
@@ -27,37 +32,28 @@ export default function HybridProfile() {
         </h2>
       </div>
 
-      {/* Three-column layout: image | text | image — full viewport width */}
-      <div ref={ref} className="flex items-stretch w-full">
+      {/* Three-column scroll-driven layout */}
+      <div ref={scrollRef} className="flex items-stretch w-full">
 
-        {/* ── Left card: expands from left screen edge ── */}
+        {/* ── Left card — Damatex unit ── */}
         <div
           className="flex-shrink-0 overflow-hidden hidden md:block"
-          style={{
-            width: isInView ? CARD_W : 0,
-            transition: `width ${ease}`,
-          }}
+          style={{ width: cardWidth }}
         >
-          <div
-            style={{
-              width: CARD_W,
-              height: '100%',
-              transform: isInView ? 'translateX(0)' : `translateX(-${CARD_W}px)`,
-              transition: `transform ${ease}`,
-            }}
-          >
+          <div style={{ width: CARD_W, transform: `translateX(${cardLeftX}px)` }}>
             <img
               src="/assets/damatex-left.jpg"
               alt="Damatex environmental control unit in cannabis grow room"
-              className="w-full h-full object-cover"
-              style={{ minHeight: 420 }}
+              className="w-full object-cover"
+              style={{ height: 480 }}
             />
           </div>
         </div>
 
-        {/* ── Centre: text content ── */}
-        <div className="flex-1 min-w-0 px-6 sm:px-10 lg:px-16 flex flex-col justify-center">
-          <div className="grid md:grid-cols-2 gap-10 items-start max-w-4xl mx-auto w-full">
+        {/* ── Centre: text ── */}
+        <div className="flex-1 min-w-0 px-6 sm:px-10 lg:px-14 flex flex-col justify-center">
+          <div ref={pillRef} className="grid md:grid-cols-2 gap-10 items-start max-w-4xl mx-auto w-full">
+
             {/* Narrative */}
             <div className="space-y-4 text-ink-muted leading-relaxed">
               <p>
@@ -89,7 +85,12 @@ export default function HybridProfile() {
                 <div
                   key={pill}
                   className="flex items-center gap-3 p-3 rounded-xl bg-surface border border-slate-100 hover:border-teal/30 transition-colors"
-                  style={{ transitionDelay: isInView ? `${i * 60}ms` : '0ms' }}
+                  style={{
+                    opacity: pillsInView ? 1 : 0,
+                    transform: pillsInView ? 'translateY(0)' : 'translateY(8px)',
+                    transition: 'opacity 0.5s ease, transform 0.5s ease',
+                    transitionDelay: pillsInView ? `${i * 60}ms` : '0ms',
+                  }}
                 >
                   <span className="w-2 h-2 rounded-full bg-teal flex-shrink-0" aria-hidden="true" />
                   <span className="text-sm text-ink-muted font-medium">{pill}</span>
@@ -99,54 +100,38 @@ export default function HybridProfile() {
           </div>
         </div>
 
-        {/* ── Right card: expands from right screen edge ── */}
+        {/* ── Right card — MTL Cannabis jar ── */}
         <div
           className="flex-shrink-0 overflow-hidden hidden md:block"
-          style={{
-            width: isInView ? CARD_W : 0,
-            transition: `width ${ease}`,
-          }}
+          style={{ width: cardWidth }}
         >
           <div
             style={{
               width: CARD_W,
-              height: '100%',
-              transform: isInView ? 'translateX(0)' : `translateX(${CARD_W}px)`,
-              transition: `transform ${ease}`,
+              transform: `translateX(${cardRightX}px)`,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              height: 480,
+              background: 'transparent',
             }}
           >
             <img
-              src="/assets/mtl-jar.jpg"
-              alt="MTL Cannabis Gas N' Up product"
-              className="w-full h-full object-cover object-left"
-              style={{ minHeight: 420 }}
+              src="/assets/mtl-jar.png"
+              alt="MTL Cannabis Gas N' Up"
+              className="w-full h-full object-contain"
             />
           </div>
         </div>
       </div>
 
-      {/* Mobile: images below content, stacked */}
-      <div className="md:hidden flex gap-4 mt-10 px-4 overflow-hidden">
-        <div
-          className="flex-1 rounded-2xl overflow-hidden shadow-md"
-          style={{
-            opacity: isInView ? 1 : 0,
-            transform: isInView ? 'translateX(0)' : 'translateX(-40px)',
-            transition: `opacity 0.7s ease, transform 0.7s ease`,
-          }}
-        >
-          <img src="/assets/damatex-left.jpg" alt="Damatex control unit" className="w-full h-48 object-cover" />
+      {/* Mobile fallback — stacked below content */}
+      <div className="md:hidden flex gap-4 mt-10 px-4">
+        <div className="flex-1 rounded-2xl overflow-hidden shadow-md">
+          <img src="/assets/damatex-left.jpg" alt="Damatex control unit" className="w-full h-44 object-cover" />
         </div>
-        <div
-          className="flex-1 rounded-2xl overflow-hidden shadow-md"
-          style={{
-            opacity: isInView ? 1 : 0,
-            transform: isInView ? 'translateX(0)' : 'translateX(40px)',
-            transition: `opacity 0.7s ease, transform 0.7s ease`,
-            transitionDelay: '100ms',
-          }}
-        >
-          <img src="/assets/mtl-jar.jpg" alt="MTL Cannabis product" className="w-full h-48 object-cover object-left" />
+        <div className="flex-1 flex items-center justify-center bg-transparent p-2">
+          <img src="/assets/mtl-jar.png" alt="MTL Cannabis product" className="w-full h-44 object-contain" />
         </div>
       </div>
     </section>
