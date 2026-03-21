@@ -11,9 +11,10 @@ const PILLS = [
 
 export default function HybridProfile() {
   const [ref, isInView] = useInView<HTMLDivElement>({ threshold: 0.1 })
+  const [imgRef, imgsInView] = useInView<HTMLDivElement>({ threshold: 0.2 })
 
   return (
-    <section id="profile" className="section-padding bg-surface-muted">
+    <section id="profile" className="section-padding bg-surface-muted overflow-hidden">
       <div
         ref={ref}
         className={`container-max transition-all duration-700 ${
@@ -65,6 +66,78 @@ export default function HybridProfile() {
                 <span className="text-sm text-ink-muted font-medium">{pill}</span>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* Photo cards — slide in from sides on scroll */}
+        <div
+          ref={imgRef}
+          className="mt-16 flex items-end justify-center gap-6 sm:gap-10"
+          aria-hidden="true"
+        >
+          {/* Left card — slides from left, slight CCW tilt */}
+          <div
+            className="relative w-48 sm:w-56 md:w-64 flex-shrink-0 rounded-2xl overflow-hidden shadow-xl shadow-slate-200/80 ring-1 ring-slate-200"
+            style={{
+              transform: imgsInView
+                ? 'translateX(0) rotate(-2.5deg) translateY(8px)'
+                : 'translateX(-120px) rotate(-6deg) translateY(30px)',
+              opacity: imgsInView ? 1 : 0,
+              transition: 'transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.7s ease',
+              transitionDelay: '0ms',
+            }}
+          >
+            <img
+              src="/assets/damatex-left.jpg"
+              alt="Damatex environmental control unit in cannabis grow room"
+              className="w-full h-72 sm:h-80 md:h-96 object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+            <div className="absolute bottom-3 left-3 right-3">
+              <p className="text-white text-xs font-mono font-medium tracking-wide opacity-90">
+                Damatex · Grow Room Control
+              </p>
+            </div>
+          </div>
+
+          {/* Centre label */}
+          <div
+            className="flex-shrink-0 text-center"
+            style={{
+              opacity: imgsInView ? 1 : 0,
+              transform: imgsInView ? 'translateY(0)' : 'translateY(16px)',
+              transition: 'opacity 0.6s ease, transform 0.6s ease',
+              transitionDelay: '300ms',
+            }}
+          >
+            <span className="inline-block text-teal font-mono text-xs uppercase tracking-widest rotate-0 select-none">
+              on the floor
+            </span>
+          </div>
+
+          {/* Right card — slides from right, slight CW tilt */}
+          <div
+            className="relative w-48 sm:w-56 md:w-64 flex-shrink-0 rounded-2xl overflow-hidden shadow-xl shadow-slate-200/80 ring-1 ring-slate-200"
+            style={{
+              transform: imgsInView
+                ? 'translateX(0) rotate(2.5deg) translateY(8px)'
+                : 'translateX(120px) rotate(6deg) translateY(30px)',
+              opacity: imgsInView ? 1 : 0,
+              transition: 'transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.7s ease',
+              transitionDelay: '120ms',
+            }}
+          >
+            <img
+              src="/assets/damatex-right.jpg"
+              alt="Damatex control system above cannabis canopy"
+              className="w-full h-72 sm:h-80 md:h-96 object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+            <div className="absolute bottom-3 left-3 right-3">
+              <p className="text-white text-xs font-mono font-medium tracking-wide opacity-90">
+                MTL Cannabis · Flower Stage
+              </p>
+            </div>
           </div>
         </div>
       </div>
