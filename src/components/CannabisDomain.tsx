@@ -29,7 +29,7 @@ export default function CannabisDomain() {
   const [ref, isInView] = useInView<HTMLDivElement>({ threshold: 0.1 })
 
   return (
-    <section id="cannabis" className="section-padding bg-surface-dark">
+    <section id="cannabis" className="section-padding bg-surface-dark/[0.99]">
       <div
         ref={ref}
         className={`container-max transition-all duration-700 ${
