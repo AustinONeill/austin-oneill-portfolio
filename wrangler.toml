@@ -5,3 +5,7 @@ compatibility_date = "2024-01-01"
 # Build command: npm run build
 # Output directory: dist
 # Functions directory: functions (auto-detected)
+
+[[hyperdrive]]
+binding = "HYPERDRIVE"
+id = "83c6b5f7001f4c32a60c5826501ec463"

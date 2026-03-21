@@ -1,15 +1,14 @@
 import { createDb } from '../../db/index'
-import { contactSubmissions } from '../../db/schema'
+import { emailSubscribers } from '../../db/schema'
 
 interface Env {
   HYPERDRIVE: Hyperdrive
   DATABASE_URL?: string
 }
 
-interface ContactPayload {
-  name: string
+interface SubscribePayload {
+  name?: string
   email: string
-  message: string
 }
 
 const CORS_HEADERS = {
@@ -21,10 +20,10 @@ const CORS_HEADERS = {
 
 export const onRequestPost: PagesFunction<Env> = async (context) => {
   try {
-    const body = await context.request.json<ContactPayload>()
+    const body = await context.request.json<SubscribePayload>()
 
-    if (!body.name?.trim() || !body.email?.trim() || !body.message?.trim()) {
-      return new Response(JSON.stringify({ error: 'Missing required fields' }), {
+    if (!body.email?.trim()) {
+      return new Response(JSON.stringify({ error: 'Email is required' }), {
         status: 400,
         headers: CORS_HEADERS,
       })
@@ -42,7 +41,6 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       context.env.HYPERDRIVE?.connectionString ?? context.env.DATABASE_URL
 
     if (!connectionString) {
-      console.error('No database connection string available')
       return new Response(JSON.stringify({ error: 'Service unavailable' }), {
         status: 503,
         headers: CORS_HEADERS,
@@ -51,20 +49,20 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 
     const db = createDb(connectionString)
 
-    await db.insert(contactSubmissions).values({
-      name: body.name.trim(),
-      email: body.email.trim().toLowerCase(),
-      message: body.message.trim(),
-      ipAddress: context.request.headers.get('CF-Connecting-IP'),
-      userAgent: context.request.headers.get('User-Agent'),
-    })
+    await db
+      .insert(emailSubscribers)
+      .values({
+        name: body.name?.trim() || null,
+        email: body.email.trim().toLowerCase(),
+      })
+      .onConflictDoNothing({ target: emailSubscribers.email })
 
     return new Response(JSON.stringify({ success: true }), {
       status: 200,
       headers: CORS_HEADERS,
     })
   } catch (err) {
-    console.error('Contact submission error:', err)
+    console.error('Subscribe error:', err)
     return new Response(JSON.stringify({ error: 'Internal server error' }), {
       status: 500,
       headers: CORS_HEADERS,
