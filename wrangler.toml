@@ -1,10 +1,7 @@
 name = "austin-oneill-portfolio"
+pages_build_output_dir = "dist"
 compatibility_date = "2024-01-01"
-
-# Cloudflare Pages project
-# Build command: npm run build
-# Output directory: dist
-# Functions directory: functions (auto-detected)
+compatibility_flags = ["nodejs_compat"]
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
