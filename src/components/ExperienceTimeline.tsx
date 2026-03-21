@@ -11,6 +11,7 @@ interface Role {
   image: string
   imageAlt: string
   imageFromRight: boolean
+  imageSize?: number
 }
 
 const ROLES: Role[] = [
@@ -22,6 +23,7 @@ const ROLES: Role[] = [
     image: '/assets/mtl-jar.png',
     imageAlt: 'MTL Cannabis',
     imageFromRight: true,
+    imageSize: 300,
     bullets: [
       'Design and implement Damatex environmental control systems across multiple grow rooms — irrigation, HVAC, CO₂, and lighting.',
       'Build stage-based lighting control logic using time and day counters for pre-veg, veg, and flower cycles.',
@@ -72,6 +74,8 @@ function RoleCard({ role }: { role: Role }) {
   const [textRef, textInView] = useInView<HTMLDivElement>({ threshold: 0.1 })
   const [imgRef, imgProgress] = useScrollProgress<HTMLDivElement>(0.55)
 
+  const imgSize = role.imageSize ?? IMG_COL
+
   // Image slides from outside its column
   const tx = Math.round((1 - imgProgress) * (role.imageFromRight ? IMG_COL + 40 : -(IMG_COL + 40)))
   const opacity = Math.max(0, imgProgress * 1.4 - 0.1) // slight lag before fade starts
@@ -90,8 +94,8 @@ function RoleCard({ role }: { role: Role }) {
       <img
         src={role.image}
         alt={role.imageAlt}
-        className="object-contain w-full"
-        style={{ height: IMG_COL, maxHeight: IMG_COL }}
+        className="object-contain"
+        style={{ height: imgSize, maxHeight: imgSize, width: imgSize }}
       />
     </div>
   )
