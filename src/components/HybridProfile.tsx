@@ -1,5 +1,6 @@
 import { useInView } from '@/hooks/useInView'
 import { useScrollProgress } from '@/hooks/useScrollProgress'
+import AnimatedBorder from '@/components/AnimatedBorder'
 
 const PILLS = [
   'Environmental automation (Damatex)',
@@ -38,12 +39,14 @@ export default function HybridProfile() {
           style={{ width: cardWidth }}
         >
           <div style={{ width: CARD_W, transform: `translateX(${leftTx}px)` }}>
-            <img
-              src="/assets/damatex-left.jpg"
-              alt="Damatex environmental control unit in cannabis grow room"
-              className="w-full object-cover"
-              style={{ height: CARD_W }}
-            />
+            <AnimatedBorder variant="controls">
+              <img
+                src="/assets/damatex-left.jpg"
+                alt="Damatex environmental control unit in cannabis grow room"
+                className="w-full object-cover"
+                style={{ height: CARD_W }}
+              />
+            </AnimatedBorder>
           </div>
         </div>
 
@@ -100,12 +103,14 @@ export default function HybridProfile() {
           style={{ width: cardWidth }}
         >
           <div style={{ width: CARD_W, transform: `translateX(${rightTx}px)` }}>
-            <img
-              src="/assets/code-snippet.png"
-              alt="Python automation code for Damatex grow room control"
-              className="w-full object-cover"
-              style={{ height: CARD_W }}
-            />
+            <AnimatedBorder variant="code">
+              <img
+                src="/assets/code-snippet.png"
+                alt="Python automation code for Damatex grow room control"
+                className="w-full object-cover"
+                style={{ height: CARD_W }}
+              />
+            </AnimatedBorder>
           </div>
         </div>
       </div>
