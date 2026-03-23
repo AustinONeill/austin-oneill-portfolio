@@ -1,43 +1,35 @@
 import { useInView } from '@/hooks/useInView'
+import { useState } from 'react'
 import ParticleBackground from './ParticleBackground'
 
-// Stylized dashboard mock for CannTycoon card
-function DashboardMock() {
+const SCREENSHOTS = [
+  { src: '/canntycoon-dashboard.png', label: 'Dashboard' },
+  { src: '/canntycoon-facility.png', label: 'Facility' },
+]
+
+function ScreenshotCarousel() {
+  const [active, setActive] = useState(0)
   return (
-    <div className="rounded-xl bg-surface-dark-card border border-teal/10 p-4 font-mono text-xs">
-      <div className="flex items-center justify-between mb-3">
-        <span className="text-teal font-medium">GROW ROOM 04 · FLOWER</span>
-        <span className="w-2 h-2 rounded-full bg-teal animate-pulse" aria-hidden="true" />
-      </div>
-      <div className="grid grid-cols-3 gap-2 mb-3">
-        {[
-          { label: 'TEMP', value: '24.1°C', ok: true },
-          { label: 'RH', value: '62%', ok: true },
-          { label: 'CO₂', value: '1,240ppm', ok: false },
-        ].map((stat) => (
-          <div key={stat.label} className="bg-surface-dark rounded-lg p-2">
-            <div className="text-ink-subtle text-[10px]">{stat.label}</div>
-            <div className={`text-sm font-semibold ${stat.ok ? 'text-teal-light' : 'text-amber-400'}`}>
-              {stat.value}
-            </div>
-          </div>
+    <div className="rounded-xl overflow-hidden border border-teal/10">
+      <img
+        src={SCREENSHOTS[active].src}
+        alt={`CannTycoon ${SCREENSHOTS[active].label} view`}
+        className="w-full object-cover"
+      />
+      <div className="flex gap-1 p-2 bg-black/40">
+        {SCREENSHOTS.map((s, i) => (
+          <button
+            key={s.label}
+            onClick={() => setActive(i)}
+            className={`px-3 py-1 rounded-lg text-xs font-mono transition-colors ${
+              i === active
+                ? 'bg-teal text-white'
+                : 'text-slate-400 hover:text-teal'
+            }`}
+          >
+            {s.label}
+          </button>
         ))}
-      </div>
-      <div className="space-y-1.5">
-        <div className="flex items-center justify-between text-[10px]">
-          <span className="text-ink-subtle">Irrigation</span>
-          <span className="text-emerald-400">NOMINAL</span>
-        </div>
-        <div className="w-full bg-surface-dark rounded-full h-1">
-          <div className="bg-teal h-1 rounded-full" style={{ width: '78%' }} />
-        </div>
-        <div className="flex items-center justify-between text-[10px]">
-          <span className="text-ink-subtle">VPD</span>
-          <span className="text-amber-400">ALERT: 1.8 kPa</span>
-        </div>
-        <div className="w-full bg-surface-dark rounded-full h-1">
-          <div className="bg-amber-400 h-1 rounded-full" style={{ width: '91%' }} />
-        </div>
       </div>
     </div>
   )
@@ -65,12 +57,16 @@ export default function Projects() {
             <ParticleBackground density={3} color="#14b8a6" speed={0.5} linkDistance={100} />
             <div className="relative z-10 flex flex-col flex-1">
               <div className="flex items-start justify-between mb-4">
-                <div>
+                <div className="flex-1">
                   <span className="text-xs font-mono text-teal uppercase tracking-widest">Featured</span>
-                  <h3 className="text-xl font-bold text-white mt-1">CannTycoon</h3>
-                  <p className="text-ink-subtle text-sm mt-0.5">Controls Simulation & Dashboard</p>
+                  <img
+                    src="/canntycoon-logo.png"
+                    alt="CannTycoon — Grow Your Empire"
+                    className="h-20 w-auto mt-1 -ml-1 drop-shadow-lg"
+                  />
+                  <p className="text-ink-subtle text-sm mt-1">Controls Simulation & Dashboard</p>
                 </div>
-                <span className="px-2 py-1 rounded-lg bg-teal/10 text-teal text-xs font-mono border border-teal/20">
+                <span className="px-2 py-1 rounded-lg bg-teal/10 text-teal text-xs font-mono border border-teal/20 self-start">
                   WIP
                 </span>
               </div>
@@ -82,7 +78,7 @@ export default function Projects() {
                 validation in software.
               </p>
 
-              <DashboardMock />
+              <ScreenshotCarousel />
 
               <ul className="mt-4 space-y-1.5">
                 {[
