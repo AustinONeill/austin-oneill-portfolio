@@ -76,12 +76,12 @@ function SkillCard({ group, delay }: { group: SkillGroup; delay: number }) {
         />
       )}
       {group.accent && !group.cannabis && (
-        <div className="absolute -right-8 -bottom-8 w-40 h-40 pointer-events-none select-none">
+        <div className="absolute -right-8 -bottom-8 w-48 h-48 pointer-events-none select-none">
           {/* pulsing teal glow behind the gear */}
           <div
             className="absolute inset-0 rounded-full"
             style={{
-              background: 'radial-gradient(circle, rgba(20,184,166,0.55) 0%, transparent 68%)',
+              background: 'radial-gradient(circle, rgba(20,184,166,0.8) 0%, rgba(20,184,166,0.3) 45%, transparent 75%)',
               animation: 'gear-glow-pulse 2.5s ease-in-out infinite',
             }}
           />
