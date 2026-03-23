@@ -75,6 +75,19 @@ function SkillCard({ group, delay }: { group: SkillGroup; delay: number }) {
           className="absolute -right-8 -bottom-4 w-48 opacity-60 pointer-events-none select-none"
         />
       )}
+      {group.accent && !group.cannabis && (
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 100 100"
+          className="absolute -left-6 -bottom-6 w-36 opacity-20 pointer-events-none select-none text-teal"
+          style={{ animation: 'spin 18s linear infinite' }}
+        >
+          <path
+            fill="currentColor"
+            d="M50 0a6 6 0 0 1 6 6v6.5a32 32 0 0 1 10.4 4.3l4.6-4.6a6 6 0 0 1 8.5 8.5l-4.6 4.6A32 32 0 0 1 79.2 35H86a6 6 0 0 1 0 12h-6.8a32 32 0 0 1-4.3 10.4l4.6 4.6a6 6 0 0 1-8.5 8.5l-4.6-4.6A32 32 0 0 1 56 70.8V77a6 6 0 0 1-12 0v-6.2a32 32 0 0 1-10.4-4.3l-4.6 4.6a6 6 0 0 1-8.5-8.5l4.6-4.6A32 32 0 0 1 20.8 47H14a6 6 0 0 1 0-12h6.8a32 32 0 0 1 4.3-10.4l-4.6-4.6a6 6 0 0 1 8.5-8.5l4.6 4.6A32 32 0 0 1 44 12.5V6a6 6 0 0 1 6-6zm0 32a18 18 0 1 0 0 36 18 18 0 0 0 0-36z"
+          />
+        </svg>
+      )}
       <div className="relative z-10 mb-4">
         <div className={`w-1 h-5 rounded-full mb-2 ${group.cannabis ? 'bg-green-400' : 'bg-teal'}`} aria-hidden="true" />
         <h3 className={`font-bold text-base ${group.accent || group.cannabis ? 'text-white' : 'text-ink'}`}>
