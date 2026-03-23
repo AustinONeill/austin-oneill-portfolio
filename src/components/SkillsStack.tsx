@@ -81,7 +81,7 @@ function SkillCard({ group, delay }: { group: SkillGroup; delay: number }) {
         <img
           src="/domain-books.png"
           aria-hidden="true"
-          className="absolute -left-6 -bottom-4 w-44 pointer-events-none select-none opacity-70"
+          className="absolute -right-6 -bottom-4 w-44 pointer-events-none select-none opacity-70"
         />
       )}
       {group.accent && !group.cannabis && !group.books && (
