@@ -6,6 +6,7 @@ interface SkillGroup {
   skills: string[]
   accent?: boolean
   cannabis?: boolean
+  books?: boolean
 }
 
 const GROUPS: SkillGroup[] = [
@@ -50,6 +51,7 @@ const GROUPS: SkillGroup[] = [
     sublabel: 'What I know cold',
     skills: ['Cannabis plant lifecycle', 'Health Canada compliance', 'CannTrack / seed-to-sale', 'Production workflows', 'IT support & facility ops'],
     accent: true,
+    books: true,
   },
 ]
 
@@ -75,7 +77,14 @@ function SkillCard({ group, delay }: { group: SkillGroup; delay: number }) {
           className="absolute -right-8 -bottom-4 w-48 opacity-60 pointer-events-none select-none"
         />
       )}
-      {group.accent && !group.cannabis && (
+      {group.books && (
+        <img
+          src="/domain-books.png"
+          aria-hidden="true"
+          className="absolute -left-6 -bottom-4 w-44 pointer-events-none select-none opacity-70"
+        />
+      )}
+      {group.accent && !group.cannabis && !group.books && (
         <div className="absolute -left-8 -bottom-8 w-32 h-32 pointer-events-none select-none">
           {/* pulsing teal glow behind the gear */}
           <div
