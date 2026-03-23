@@ -59,7 +59,7 @@ function SkillCard({ group, delay }: { group: SkillGroup; delay: number }) {
   return (
     <div
       ref={ref}
-      className={`rounded-2xl border p-5 transition-all duration-500 ${
+      className={`rounded-2xl border p-5 transition-all duration-500 relative overflow-hidden ${
         group.cannabis
           ? 'bg-green-950 border-green-700/40 text-white'
           : group.accent
@@ -68,7 +68,14 @@ function SkillCard({ group, delay }: { group: SkillGroup; delay: number }) {
       } ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
       style={{ transitionDelay: `${delay}ms` }}
     >
-      <div className="mb-4">
+      {group.cannabis && (
+        <img
+          src="/cannabis-leaf-cyber.png"
+          aria-hidden="true"
+          className="absolute -right-8 -bottom-4 w-48 opacity-10 pointer-events-none select-none"
+        />
+      )}
+      <div className="relative z-10 mb-4">
         <div className={`w-1 h-5 rounded-full mb-2 ${group.cannabis ? 'bg-green-400' : 'bg-teal'}`} aria-hidden="true" />
         <h3 className={`font-bold text-base ${group.accent || group.cannabis ? 'text-white' : 'text-ink'}`}>
           {group.cannabis && <span className="mr-1.5" aria-hidden="true">🌿</span>}
@@ -81,7 +88,7 @@ function SkillCard({ group, delay }: { group: SkillGroup; delay: number }) {
         </p>
       </div>
 
-      <div className="flex flex-wrap gap-2">
+      <div className="relative z-10 flex flex-wrap gap-2">
         {group.skills.map((skill) => (
           <span
             key={skill}
