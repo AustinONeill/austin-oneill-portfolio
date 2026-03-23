@@ -92,8 +92,7 @@ function SkillCard({ group, delay }: { group: SkillGroup; delay: number }) {
             <img
               src="/controls-gear.png"
               aria-hidden="true"
-              className="w-full h-full opacity-60"
-              style={{ mixBlendMode: 'multiply' }}
+              className="w-full h-full object-contain opacity-60"
             />
           </div>
         </div>
