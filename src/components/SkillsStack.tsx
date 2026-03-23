@@ -72,7 +72,7 @@ function SkillCard({ group, delay }: { group: SkillGroup; delay: number }) {
         <img
           src="/cannabis-leaf-cyber.png"
           aria-hidden="true"
-          className="absolute -right-8 -bottom-4 w-48 opacity-10 pointer-events-none select-none"
+          className="absolute -right-8 -bottom-4 w-48 opacity-25 pointer-events-none select-none"
         />
       )}
       <div className="relative z-10 mb-4">
