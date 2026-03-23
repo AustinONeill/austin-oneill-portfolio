@@ -79,7 +79,7 @@ function SkillCard({ group, delay }: { group: SkillGroup; delay: number }) {
         <img
           src="/controls-gear.png"
           aria-hidden="true"
-          className="absolute -left-8 -bottom-8 w-40 opacity-40 pointer-events-none select-none"
+          className="absolute -right-8 -bottom-8 w-40 opacity-60 pointer-events-none select-none"
           style={{ animation: 'spin 18s linear infinite' }}
         />
       )}
