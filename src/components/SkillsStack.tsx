@@ -5,6 +5,7 @@ interface SkillGroup {
   sublabel: string
   skills: string[]
   accent?: boolean
+  cannabis?: boolean
 }
 
 const GROUPS: SkillGroup[] = [
@@ -30,6 +31,21 @@ const GROUPS: SkillGroup[] = [
     accent: true,
   },
   {
+    label: 'Cultivation & Grow Knowledge',
+    sublabel: 'Hands-on plant science',
+    skills: [
+      'VPD & vapour pressure management',
+      'Nutrient feeding schedules & EC/pH balancing',
+      'Plant training (LST, topping, SCROG)',
+      'IPM & pest / pathogen identification',
+      'Propagation — cloning & seedling care',
+      'Trichome maturity & harvest indicators',
+      'Strain phenotype observation',
+      'Grow media — coco, rockwool, soil',
+    ],
+    cannabis: true,
+  },
+  {
     label: 'Domain Knowledge',
     sublabel: 'What I know cold',
     skills: ['Cannabis plant lifecycle', 'Health Canada compliance', 'CannTrack / seed-to-sale', 'Production workflows', 'IT support & facility ops'],
@@ -44,18 +60,23 @@ function SkillCard({ group, delay }: { group: SkillGroup; delay: number }) {
     <div
       ref={ref}
       className={`rounded-2xl border p-5 transition-all duration-500 ${
-        group.accent
+        group.cannabis
+          ? 'bg-green-950 border-green-700/40 text-white'
+          : group.accent
           ? 'bg-surface-dark/[0.99] border-teal/20 text-white'
           : 'bg-surface-muted border-slate-100 hover:border-teal/20'
       } ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
       style={{ transitionDelay: `${delay}ms` }}
     >
       <div className="mb-4">
-        <div className="w-1 h-5 rounded-full bg-teal mb-2" aria-hidden="true" />
-        <h3 className={`font-bold text-base ${group.accent ? 'text-white' : 'text-ink'}`}>
+        <div className={`w-1 h-5 rounded-full mb-2 ${group.cannabis ? 'bg-green-400' : 'bg-teal'}`} aria-hidden="true" />
+        <h3 className={`font-bold text-base ${group.accent || group.cannabis ? 'text-white' : 'text-ink'}`}>
+          {group.cannabis && <span className="mr-1.5" aria-hidden="true">🌿</span>}
           {group.label}
         </h3>
-        <p className={`text-xs mt-0.5 font-mono ${group.accent ? 'text-teal-light' : 'text-ink-subtle'}`}>
+        <p className={`text-xs mt-0.5 font-mono ${
+          group.cannabis ? 'text-green-400' : group.accent ? 'text-teal-light' : 'text-ink-subtle'
+        }`}>
           {group.sublabel}
         </p>
       </div>
@@ -65,7 +86,9 @@ function SkillCard({ group, delay }: { group: SkillGroup; delay: number }) {
           <span
             key={skill}
             className={`px-2.5 py-1 rounded-lg text-xs font-medium ${
-              group.accent
+              group.cannabis
+                ? 'bg-green-900/60 text-green-300 border border-green-700/40'
+                : group.accent
                 ? 'bg-teal/10 text-teal-light border border-teal/15'
                 : 'bg-surface border border-slate-150 text-ink-muted'
             }`}
