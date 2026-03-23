@@ -78,11 +78,20 @@ function SkillCard({ group, delay }: { group: SkillGroup; delay: number }) {
         />
       )}
       {group.books && (
-        <img
-          src="/domain-books.png"
-          aria-hidden="true"
-          className="absolute -right-6 -bottom-4 w-44 pointer-events-none select-none opacity-70"
-        />
+        <div className="absolute -right-6 -bottom-4 w-44 pointer-events-none select-none">
+          <div
+            className="absolute inset-0 rounded-full"
+            style={{
+              background: 'radial-gradient(ellipse at 60% 80%, rgba(20,184,166,0.7) 0%, rgba(20,184,166,0.25) 45%, transparent 72%)',
+              animation: 'gear-glow-pulse 2.8s ease-in-out infinite',
+            }}
+          />
+          <img
+            src="/domain-books.png"
+            aria-hidden="true"
+            className="relative w-full opacity-70"
+          />
+        </div>
       )}
       {group.accent && !group.cannabis && !group.books && (
         <div className="absolute -left-8 -bottom-8 w-32 h-32 pointer-events-none select-none">
