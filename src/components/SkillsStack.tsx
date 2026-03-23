@@ -76,7 +76,7 @@ function SkillCard({ group, delay }: { group: SkillGroup; delay: number }) {
         />
       )}
       {group.accent && !group.cannabis && (
-        <div className="absolute -right-8 -bottom-8 w-48 h-48 pointer-events-none select-none">
+        <div className="absolute -right-8 -bottom-8 w-32 h-32 pointer-events-none select-none">
           {/* pulsing teal glow behind the gear */}
           <div
             className="absolute inset-0 rounded-full"
