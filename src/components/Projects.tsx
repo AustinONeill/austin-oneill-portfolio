@@ -161,10 +161,10 @@ export default function Projects() {
                   tags: ['TypeScript', 'React', 'Game Dev'],
                 },
                 {
-                  name: 'gardenops',
-                  url: 'https://github.com/AustinONeill/gardenops',
-                  desc: 'Cultivation ops tooling — grow tracking, environmental logging, and schedule management drawing on real facility experience.',
-                  tags: ['Python', 'Automation'],
+                  name: 'mtl-missioncontrol',
+                  url: 'https://github.com/AustinONeill/mtl-missioncontrol',
+                  desc: 'Real-time cannabis facility dashboard — isometric facility map, drag-and-drop overlay management, compliance logging, room transfers, and live multi-user sync via WebSocket.',
+                  tags: ['React', 'Hono', 'Cloudflare Workers', 'Durable Objects', 'Neon', 'WebSocket'],
                 },
               ].map((project) => (
                 <a
