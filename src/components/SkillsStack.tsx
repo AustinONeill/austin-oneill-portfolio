@@ -71,11 +71,20 @@ function SkillCard({ group, delay }: { group: SkillGroup; delay: number }) {
       style={{ transitionDelay: `${delay}ms` }}
     >
       {group.cannabis && (
-        <img
-          src="/cannabis-leaf-cyber.png"
-          aria-hidden="true"
-          className="absolute -right-8 -bottom-4 w-48 opacity-60 pointer-events-none select-none"
-        />
+        <div className="absolute -right-8 -bottom-4 w-48 pointer-events-none select-none">
+          <div
+            className="absolute inset-0 rounded-full"
+            style={{
+              background: 'radial-gradient(circle, rgba(74,222,128,0.65) 0%, rgba(34,197,94,0.25) 45%, transparent 72%)',
+              animation: 'gear-glow-pulse 3s ease-in-out infinite',
+            }}
+          />
+          <img
+            src="/cannabis-leaf-cyber.png"
+            aria-hidden="true"
+            className="relative w-full opacity-60"
+          />
+        </div>
       )}
       {group.books && (
         <div className="absolute -right-6 -bottom-4 w-44 pointer-events-none select-none">
