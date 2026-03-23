@@ -85,15 +85,17 @@ function SkillCard({ group, delay }: { group: SkillGroup; delay: number }) {
               animation: 'gear-glow-pulse 2.5s ease-in-out infinite',
             }}
           />
-          <img
-            src="/controls-gear.png"
-            aria-hidden="true"
-            className="absolute inset-0 w-full h-full opacity-60"
-            style={{
-              animation: 'spin 18s linear infinite',
-              mixBlendMode: 'multiply',
-            }}
-          />
+          <div
+            className="absolute inset-0"
+            style={{ animation: 'spin 18s linear infinite', transformOrigin: 'center', transformStyle: 'flat' }}
+          >
+            <img
+              src="/controls-gear.png"
+              aria-hidden="true"
+              className="w-full h-full opacity-60"
+              style={{ mixBlendMode: 'multiply' }}
+            />
+          </div>
         </div>
       )}
       <div className="relative z-10 mb-4">
