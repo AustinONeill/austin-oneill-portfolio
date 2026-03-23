@@ -4,6 +4,8 @@ const CERTS = [
   { name: 'CCNA', issuer: 'Cisco', year: '2024', color: 'text-blue-400', bg: 'bg-blue-50 border-blue-100' },
   { name: 'AWS Cloud Foundations', issuer: 'Amazon Web Services', year: '2024', color: 'text-amber-600', bg: 'bg-amber-50 border-amber-100' },
   { name: 'CannSell', issuer: 'Cannabis Industry', year: '2024', color: 'text-teal', bg: 'bg-teal/5 border-teal/20' },
+  { name: 'INICIA 3', issuer: 'UNAM Mexico City', year: 'In Progress', color: 'text-orange-500', bg: 'bg-orange-50 border-orange-100', inProgress: true },
+  { name: 'Claude Certified Architect', issuer: 'Anthropic', year: 'In Progress', color: 'text-purple-500', bg: 'bg-purple-50 border-purple-100', inProgress: true },
 ]
 
 export default function EducationCerts() {
@@ -66,7 +68,11 @@ export default function EducationCerts() {
                     <p className="font-semibold text-ink text-sm">{cert.name}</p>
                     <p className="text-xs text-ink-muted">{cert.issuer}</p>
                   </div>
-                  <span className="text-xs font-mono text-ink-subtle flex-shrink-0">{cert.year}</span>
+                  {cert.inProgress ? (
+                    <span className="text-xs font-mono px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 border border-amber-200 flex-shrink-0">In Progress</span>
+                  ) : (
+                    <span className="text-xs font-mono text-ink-subtle flex-shrink-0">{cert.year}</span>
+                  )}
                 </div>
               ))}
             </div>
