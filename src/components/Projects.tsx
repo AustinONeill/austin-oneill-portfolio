@@ -155,16 +155,16 @@ export default function Projects() {
                   tags: ['JavaScript', 'REST API'],
                 },
                 {
-                  name: 'portfolioapps',
-                  url: 'https://github.com/AustinONeill/portfolioapps',
-                  desc: 'A collection of small apps built to practice full-stack fundamentals — form handling, state management, and component design.',
-                  tags: ['JavaScript', 'React'],
+                  name: 'ygo-mmo',
+                  url: 'https://github.com/AustinONeill/ygo-mmo',
+                  desc: 'A Yu-Gi-Oh MMO built in TypeScript — turn-based dueling, world exploration, and persistent player progression across a tiled game world.',
+                  tags: ['TypeScript', 'React', 'Game Dev'],
                 },
                 {
-                  name: 'portfolio',
-                  url: 'https://github.com/AustinONeill/portfolio',
-                  desc: 'An earlier portfolio build exploring layout, routing, and component architecture in vanilla JavaScript.',
-                  tags: ['JavaScript'],
+                  name: 'gardenops',
+                  url: 'https://github.com/AustinONeill/gardenops',
+                  desc: 'Cultivation ops tooling — grow tracking, environmental logging, and schedule management drawing on real facility experience.',
+                  tags: ['Python', 'Automation'],
                 },
               ].map((project) => (
                 <a
