@@ -120,12 +120,14 @@ export default function Projects() {
                 >
                   View on GitHub
                 </a>
-                <button
-                  disabled
-                  className="px-4 py-2 rounded-xl border border-white/10 text-slate-500 text-sm font-semibold cursor-not-allowed"
+                <a
+                  href="https://canntycoon.pages.dev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 rounded-xl border border-teal/30 text-teal text-sm font-semibold hover:bg-teal/10 transition-colors"
                 >
-                  Live Demo (soon)
-                </button>
+                  Live Demo
+                </a>
               </div>
             </div>
           </div>
