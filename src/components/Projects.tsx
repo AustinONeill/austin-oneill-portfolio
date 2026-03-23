@@ -7,16 +7,26 @@ const SCREENSHOTS = [
   { src: '/canntycoon-facility.png', label: 'Facility' },
 ]
 
+const TEAL_GLOW = '0 0 0 1px rgba(20,184,166,0.35), 0 0 14px rgba(20,184,166,0.2)'
+
 function ScreenshotCarousel() {
   const [active, setActive] = useState(0)
   return (
-    <div className="rounded-xl overflow-hidden border border-teal/10">
-      <img
-        src={SCREENSHOTS[active].src}
-        alt={`CannTycoon ${SCREENSHOTS[active].label} view`}
-        className="w-full object-cover"
-      />
-      <div className="flex gap-1 p-2 bg-black/40">
+    <div className="flex flex-col gap-2">
+      <div
+        className="rounded-xl overflow-hidden"
+        style={{ boxShadow: TEAL_GLOW }}
+      >
+        <img
+          src={SCREENSHOTS[active].src}
+          alt={`CannTycoon ${SCREENSHOTS[active].label} view`}
+          className="w-full object-cover"
+        />
+      </div>
+      <div
+        className="flex gap-1 p-2 bg-black/40 rounded-xl"
+        style={{ boxShadow: TEAL_GLOW }}
+      >
         {SCREENSHOTS.map((s, i) => (
           <button
             key={s.label}
@@ -54,7 +64,7 @@ export default function Projects() {
         >
           {/* CannTycoon — dark card */}
           <div className="group relative bg-surface-dark rounded-3xl p-6 hover:-translate-y-1 hover:shadow-xl hover:shadow-teal/10 transition-all duration-300 flex flex-col overflow-hidden">
-            <ParticleBackground density={3} color="#14b8a6" speed={0.5} linkDistance={100} />
+            <ParticleBackground density={3} color="#14b8a6" speed={0.5} linkDistance={75} />
             <div className="relative z-10 flex flex-col flex-1">
               <div className="flex items-start justify-between mb-4">
                 <div className="flex-1">
