@@ -82,10 +82,12 @@ export default function Projects() {
               </div>
 
               <p className="text-slate-400 text-sm leading-relaxed mb-4">
-                A simulation system modeling cannabis plant growth, environmental variables, and
-                resource management — built on the same logic structures used in real Damatex
-                control systems. A testbed for feedback loops, fault detection, and state-based
-                validation in software.
+                A cannabis cultivation simulation that puts you in the driver's seat of your own
+                facility — design your rooms, dial in environmental conditions, and manage resources
+                as your plants move from seed to harvest. Balance temperature, humidity, lighting,
+                and irrigation while responding to real-time feedback, unexpected issues, and system
+                failures. Built around dynamic systems and feedback loops, the game challenges you
+                to think like both a grower and a control systems operator.
               </p>
 
               <ScreenshotCarousel />
