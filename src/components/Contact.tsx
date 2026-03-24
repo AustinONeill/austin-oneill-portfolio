@@ -58,7 +58,7 @@ export default function Contact() {
               <p className="text-xs font-mono text-ink-subtle uppercase tracking-widest mb-4">Direct contact</p>
               <div className="space-y-3">
                 <a
-                  href="mailto:austinoneill55@gmail.com"
+                  href="mailto:aoneill@abbamedix.com"
                   className="flex items-center gap-3 p-3 rounded-xl hover:bg-surface hover:text-teal transition-colors group"
                 >
                   <div className="w-9 h-9 rounded-lg bg-teal/10 border border-teal/20 flex items-center justify-center flex-shrink-0">
@@ -68,7 +68,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-xs text-ink-subtle">Email</p>
-                    <p className="text-sm font-medium text-ink group-hover:text-teal transition-colors">austinoneill55@gmail.com</p>
+                    <p className="text-sm font-medium text-ink group-hover:text-teal transition-colors">aoneill@abbamedix.com</p>
                   </div>
                 </a>
 

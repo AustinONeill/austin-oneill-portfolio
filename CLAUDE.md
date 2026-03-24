@@ -91,7 +91,7 @@ wrangler.toml Cloudflare Pages/Workers config
 
 ### Key Content Facts
 - **Name**: Austin O'Neill
-- **Email**: austinoneill55@gmail.com
+- **Email**: aoneill@abbamedix.com
 - **Phone**: 226-700-6808
 - **GitHub**: https://github.com/AustinONeill
 - **Location**: Montréal, QC
