@@ -130,18 +130,18 @@ function RoleCard({ role }: { role: Role }) {
           textInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
         }`}
       >
-        <div className="flex flex-wrap items-start justify-between gap-2 mb-3">
+        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 sm:gap-2 mb-3">
           <div>
-            <h3 className="font-bold text-ink text-lg leading-tight">{role.title}</h3>
+            <h3 className="font-bold text-ink text-base sm:text-lg leading-tight">{role.title}</h3>
             <p className="text-teal font-medium text-sm mt-0.5">{role.company}</p>
           </div>
-          <div className="text-right flex-shrink-0">
-            <p className="text-sm font-mono text-ink-muted">{role.period}</p>
+          <div className="sm:text-right flex-shrink-0">
+            <p className="text-xs sm:text-sm font-mono text-ink-muted">{role.period}</p>
             <p className="text-xs text-ink-subtle mt-0.5">{role.location}</p>
           </div>
         </div>
 
-        <div className="bg-surface border border-slate-100 rounded-2xl p-5 hover:border-teal/20 hover:shadow-sm transition-all">
+        <div className="bg-surface border border-slate-100 rounded-2xl p-4 sm:p-5 hover:border-teal/20 hover:shadow-sm transition-all">
           <ul className="space-y-2 mb-4">
             {role.bullets.map((bullet) => (
               <li key={bullet} className="flex gap-2 text-sm text-ink-muted leading-relaxed">

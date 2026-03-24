@@ -91,7 +91,7 @@ export default function Contact() {
 
             <div>
               <p className="text-xs font-mono text-ink-subtle uppercase tracking-widest mb-4">Find me online</p>
-              <div className="flex gap-3">
+              <div className="flex flex-col sm:flex-row gap-3">
                 <a
                   href="https://github.com/AustinONeill"
                   target="_blank"

@@ -21,7 +21,7 @@ function ScreenshotCarousel() {
         <img
           src={SCREENSHOTS[active].src}
           alt={`CannTycoon ${SCREENSHOTS[active].label} view`}
-          className="w-full object-cover"
+          className="w-full object-cover max-h-48 sm:max-h-none"
         />
       </div>
       <div
@@ -114,12 +114,12 @@ export default function Projects() {
                 ))}
               </div>
 
-              <div className="flex gap-3 mt-5">
+              <div className="flex flex-col sm:flex-row gap-3 mt-5">
                 <a
                   href="https://github.com/AustinONeill"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-xl bg-teal text-white text-sm font-semibold hover:bg-teal-dark transition-colors"
+                  className="text-center px-4 py-2 rounded-xl bg-teal text-white text-sm font-semibold hover:bg-teal-dark transition-colors"
                 >
                   View on GitHub
                 </a>
@@ -127,7 +127,7 @@ export default function Projects() {
                   href="https://canntycoon.pages.dev"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-xl border border-teal/30 text-teal text-sm font-semibold hover:bg-teal/10 transition-colors"
+                  className="text-center px-4 py-2 rounded-xl border border-teal/30 text-teal text-sm font-semibold hover:bg-teal/10 transition-colors"
                 >
                   Live Demo
                 </a>

@@ -62,7 +62,7 @@ function SkillCard({ group, delay }: { group: SkillGroup; delay: number }) {
   return (
     <div
       ref={ref}
-      className={`rounded-2xl border p-5 transition-all duration-500 relative overflow-hidden ${
+      className={`rounded-2xl border p-4 sm:p-5 transition-all duration-500 relative overflow-hidden ${
         group.cannabis
           ? 'bg-green-950 border-green-700/40 text-white'
           : group.accent
@@ -167,7 +167,7 @@ export default function SkillsStack() {
   return (
     <section id="skills" className="section-padding bg-surface-muted">
       <div className="container-max">
-        <div className="mb-12">
+        <div className="mb-8 sm:mb-12">
           <SectionLabel>Capabilities</SectionLabel>
           <h2 className="text-3xl sm:text-4xl font-bold text-ink mt-2">Skills &amp; Stack</h2>
           <p className="text-ink-muted mt-3 max-w-xl">

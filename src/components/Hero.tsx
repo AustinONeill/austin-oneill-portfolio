@@ -54,23 +54,25 @@ export default function Hero() {
         </p>
 
         {/* CTAs */}
-        <div className="flex flex-wrap items-center gap-4">
-          <a
-            href="#experience"
-            className="px-6 py-3 rounded-xl bg-teal text-white font-semibold hover:bg-teal-dark transition-colors shadow-sm shadow-teal/30"
-          >
-            View Experience
-          </a>
-          <a
-            href="/assets/austin-oneill-resume.pdf"
-            download
-            className="px-6 py-3 rounded-xl border border-slate-200 text-ink font-semibold hover:border-teal hover:text-teal transition-colors"
-          >
-            Download Resume
-          </a>
+        <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-3 sm:gap-4">
+          <div className="flex gap-3">
+            <a
+              href="#experience"
+              className="flex-1 sm:flex-none text-center px-6 py-3 rounded-xl bg-teal text-white font-semibold hover:bg-teal-dark transition-colors shadow-sm shadow-teal/30"
+            >
+              View Experience
+            </a>
+            <a
+              href="/assets/austin-oneill-resume.pdf"
+              download
+              className="flex-1 sm:flex-none text-center px-6 py-3 rounded-xl border border-slate-200 text-ink font-semibold hover:border-teal hover:text-teal transition-colors"
+            >
+              Download Resume
+            </a>
+          </div>
 
           {/* Social icons */}
-          <div className="flex items-center gap-3 ml-1">
+          <div className="flex items-center gap-3 sm:ml-1">
             <a
               href="https://github.com/AustinONeill"
               target="_blank"
