@@ -101,7 +101,7 @@ export default function Contact() {
                   GitHub
                 </a>
                 <a
-                  href="https://linkedin.com/in/austinoneill"
+                  href="https://www.linkedin.com/in/austin-o-neill-4153ba223/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-200 text-ink text-sm font-medium hover:border-teal hover:text-teal transition-colors"

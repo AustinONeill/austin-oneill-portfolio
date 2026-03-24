@@ -81,7 +81,7 @@ export default function Hero() {
               <GitHubIcon />
             </a>
             <a
-              href="https://linkedin.com/in/austinoneill"
+              href="https://www.linkedin.com/in/austin-o-neill-4153ba223/"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 rounded-lg text-ink-subtle hover:text-teal hover:bg-teal/5 transition-colors"
