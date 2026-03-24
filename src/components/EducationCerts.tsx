@@ -24,8 +24,10 @@ export default function EducationCerts() {
           <h2 className="text-3xl sm:text-4xl font-bold text-ink mt-2">Education &amp; Certifications</h2>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 items-end">
+        <div className="grid md:grid-cols-2 gap-8 items-start">
           {/* Education card */}
+          <div>
+            <p className="text-xs font-mono text-ink-subtle uppercase tracking-widest mb-4">Degree</p>
           <div className="bg-surface-muted border border-slate-100 rounded-2xl p-6 hover:border-teal/20 transition-colors">
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 rounded-xl bg-teal/10 border border-teal/20 flex items-center justify-center flex-shrink-0" aria-hidden="true">
@@ -48,6 +50,7 @@ export default function EducationCerts() {
                 </p>
               </div>
             </div>
+          </div>
           </div>
 
           {/* Certifications */}
