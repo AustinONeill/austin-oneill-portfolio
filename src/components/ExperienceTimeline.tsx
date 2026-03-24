@@ -159,10 +159,6 @@ function RoleCard({ role }: { role: Role }) {
           </div>
         </div>
 
-        {/* Mobile: image below card */}
-        <div className="md:hidden mt-4 flex justify-center">
-          <img src={role.image} alt={role.imageAlt} className="h-32 w-auto object-contain" />
-        </div>
       </div>
 
       {/* Right image slot */}
