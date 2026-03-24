@@ -133,7 +133,13 @@ export default function Projects() {
           </div>
 
           {/* GitHub Projects — light card */}
-          <div className="group bg-surface-muted rounded-3xl p-6 border border-slate-100 hover:border-teal/20 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 flex flex-col">
+          <div className="group relative bg-surface-muted rounded-3xl p-6 border border-slate-100 hover:border-teal/20 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 flex flex-col overflow-hidden">
+            {/* decorative plant — centered behind project pills */}
+            <img
+              src="/cyber-plant.png"
+              aria-hidden="true"
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 opacity-10 pointer-events-none select-none"
+            />
             <div className="mb-5">
               <span className="text-xs font-mono text-teal uppercase tracking-widest">GitHub</span>
               <h3 className="text-xl font-bold text-ink mt-1">Open Source &amp; Portfolio</h3>
