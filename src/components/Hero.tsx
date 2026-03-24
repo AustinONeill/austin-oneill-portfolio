@@ -1,5 +1,4 @@
 import ParticleBackground from './ParticleBackground'
-import CannabisLeafParticles from './CannabisLeafParticles'
 
 const GitHubIcon = () => (
   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -28,13 +27,6 @@ export default function Hero() {
         aria-hidden="true"
       />
 
-      {/* Interactive particle cannabis leaf — click to disperse */}
-      <div
-        className="absolute right-8 top-1/2 -translate-y-1/2 w-80 h-80 lg:w-96 lg:h-96 hidden md:block opacity-70"
-        aria-hidden="true"
-      >
-        <CannabisLeafParticles />
-      </div>
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         {/* Status pill */}

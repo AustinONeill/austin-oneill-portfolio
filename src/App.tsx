@@ -1,4 +1,5 @@
 import Nav from '@/components/Nav'
+import PixelDrop from '@/components/PixelDrop'
 import Hero from '@/components/Hero'
 import HybridProfile from '@/components/HybridProfile'
 import ExperienceTimeline from '@/components/ExperienceTimeline'
@@ -13,6 +14,7 @@ export default function App() {
   return (
     <>
       <Nav />
+      <PixelDrop />
       <main>
         <Hero />
         <HybridProfile />
