@@ -13,7 +13,7 @@ const GROUPS: SkillGroup[] = [
   {
     label: 'Languages & Frameworks',
     sublabel: 'What I write',
-    skills: ['JavaScript', 'TypeScript', 'Python', 'HTML5', 'CSS3', 'C#', 'SQL', 'React', 'Node.js', '.NET'],
+    skills: ['JavaScript', 'TypeScript', 'Python', 'HTML5', 'CSS3', 'C#', 'C++', 'Java', 'PHP', 'SQL', 'React', 'Node.js', '.NET'],
   },
   {
     label: 'Tools & Platforms',
