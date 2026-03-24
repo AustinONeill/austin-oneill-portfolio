@@ -18,7 +18,7 @@ const GROUPS: SkillGroup[] = [
   {
     label: 'Tools & Platforms',
     sublabel: 'What I ship with',
-    skills: ['Git', 'GitHub', 'VS Code', 'Visual Studio', 'NPM', 'Bootstrap', 'Axios', 'MongoDB', 'Cloudflare'],
+    skills: ['Git', 'GitHub', 'VS Code', 'Visual Studio', 'NPM', 'Bootstrap', 'Axios', 'MongoDB', 'Cloudflare', 'AWS'],
   },
   {
     label: 'Development Practices',
