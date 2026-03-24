@@ -55,27 +55,22 @@ export default function HybridProfile() {
           <div ref={pillRef} className="grid md:grid-cols-2 gap-10 items-start max-w-4xl mx-auto w-full">
             <div className="space-y-4 text-ink-muted leading-relaxed">
               <p>
-                I'm a controls technician specializing in Damatex-based environmental automation
-                for licensed cannabis production — designing, implementing, and tuning the systems
-                that govern temperature, humidity, CO₂, irrigation, and lighting across multi-room
-                grow facilities.
+                I'm a controls technician specializing in Damatex environmental automation for
+                licensed cannabis production — designing and tuning the systems that govern
+                temperature, humidity, CO₂, irrigation, and lighting across grow rooms.
               </p>
               <p>
-                What differentiates my work is a dual foundation in controls and software
-                development. Beyond configuring environmental systems, I build internal tools,
-                dashboards, and automation scripts that extend control system capabilities —
-                enabling real-time visibility, improving fault detection, and reducing reliance on
-                external vendors for custom reporting or workflows.
+                What sets me apart is that I'm also a trained software developer. I build the
+                internal tools, dashboards, and automation scripts that extend those control
+                systems, giving teams real-time visibility and reducing reliance on external
+                vendors for every custom report or workflow.
               </p>
               <p>
-                I approach cultivation environments as integrated systems. I understand both the
-                biological requirements of the plant and the control logic required to consistently
-                deliver those conditions — from PLC-level decision making on the plant floor to
-                TypeScript-based tooling in the cloud.
+                I understand both what the plant needs and how to build the system that delivers it —
+                from PLC logic on the plant floor to a TypeScript script running in the cloud.
               </p>
               <p className="font-medium text-ink">
-                This combination of controls engineering, software development, and applied
-                cultivation knowledge is uncommon in cannabis — and that's exactly where I operate.
+                It's an uncommon combination in cannabis. That's the point.
               </p>
             </div>
 
