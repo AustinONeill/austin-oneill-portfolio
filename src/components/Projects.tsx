@@ -138,7 +138,7 @@ export default function Projects() {
             <img
               src="/cyber-plant.png"
               aria-hidden="true"
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 opacity-10 pointer-events-none select-none"
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 opacity-40 pointer-events-none select-none"
             />
             <div className="mb-5">
               <span className="text-xs font-mono text-teal uppercase tracking-widest">GitHub</span>
