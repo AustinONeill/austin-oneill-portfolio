@@ -36,7 +36,7 @@ const ROLES: Role[] = [
     tags: ['Damatex', 'HVAC Controls', 'Irrigation Logic', 'Fault Detection', 'VPD Tuning', 'State Validation', 'Internal Tools'],
   },
   {
-    title: 'IT Technician & Cultivation Support',
+    title: 'IT Tech / Cultivation Support',
     company: 'MTL Cannabis (Abba Medix Corp)',
     location: 'Pickering, ON',
     period: 'Nov 2024 – Oct 2025',
