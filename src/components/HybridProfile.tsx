@@ -2,13 +2,29 @@ import { useInView } from '@/hooks/useInView'
 import { useScrollProgress } from '@/hooks/useScrollProgress'
 import AnimatedBorder from '@/components/AnimatedBorder'
 
-const PILLS = [
-  'Cannabis plant lifecycle — seed to harvest',
-  'Environmental system solutions & diagnostics',
-  'Room automation',
-  'Lighting schedules (pre-veg, veg, flower)',
-  'Irrigation volume parameters and analysis',
-  'Hands-on defoliation, consistency insurance, transplanting',
+const PILL_GROUPS = [
+  {
+    label: 'Cultivation & Environment',
+    pills: [
+      'Cannabis plant lifecycle — seed to harvest',
+      'Environmental system solutions & diagnostics',
+      'Room automation',
+      'Lighting schedules (pre-veg, veg, flower)',
+      'Irrigation volume parameters and analysis',
+      'Hands-on defoliation, consistency insurance, transplanting',
+    ],
+  },
+  {
+    label: 'Compliance & Production',
+    pills: [
+      'Health Canada regulatory compliance across cultivation and production environments',
+      'CannTrack: batch tracking, tax stamp handling, and inventory traceability',
+      'CannSell certified (2024)',
+      'Standard Operating Procedures (SOPs): contribution, implementation, and adherence',
+      'Facility security and compliance inspections support',
+      'GMP-aligned production practices and sanitation standards',
+    ],
+  },
 ]
 
 const CARD_W = 280
@@ -74,23 +90,29 @@ export default function HybridProfile() {
               </p>
             </div>
 
-            <div className="space-y-3">
-              <p className="text-xs font-mono text-ink-subtle uppercase tracking-widest mb-4">
-                Where I bring leverage
-              </p>
-              {PILLS.map((pill, i) => (
-                <div
-                  key={pill}
-                  className="flex items-center gap-3 p-3 rounded-xl bg-surface border border-slate-100 hover:border-teal/30 transition-colors"
-                  style={{
-                    opacity: pillsInView ? 1 : 0,
-                    transform: pillsInView ? 'translateY(0)' : 'translateY(8px)',
-                    transition: 'opacity 0.5s ease, transform 0.5s ease',
-                    transitionDelay: pillsInView ? `${i * 60}ms` : '0ms',
-                  }}
-                >
-                  <span className="w-2 h-2 rounded-full bg-teal flex-shrink-0" aria-hidden="true" />
-                  <span className="text-sm text-ink-muted font-medium">{pill}</span>
+            <div className="space-y-6">
+              {PILL_GROUPS.map((group, gi) => (
+                <div key={group.label}>
+                  <p className="text-xs font-mono text-ink-subtle uppercase tracking-widest mb-3">
+                    {group.label}
+                  </p>
+                  <div className="space-y-2">
+                    {group.pills.map((pill, i) => (
+                      <div
+                        key={pill}
+                        className="flex items-center gap-3 p-3 rounded-xl bg-surface border border-slate-100 hover:border-teal/30 transition-colors"
+                        style={{
+                          opacity: pillsInView ? 1 : 0,
+                          transform: pillsInView ? 'translateY(0)' : 'translateY(8px)',
+                          transition: 'opacity 0.5s ease, transform 0.5s ease',
+                          transitionDelay: pillsInView ? `${(gi * 6 + i) * 60}ms` : '0ms',
+                        }}
+                      >
+                        <span className="w-2 h-2 rounded-full bg-teal flex-shrink-0" aria-hidden="true" />
+                        <span className="text-sm text-ink-muted font-medium">{pill}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>
