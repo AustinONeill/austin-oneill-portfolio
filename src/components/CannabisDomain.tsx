@@ -1,4 +1,5 @@
 import { useInView } from '@/hooks/useInView'
+import SectionLabel from '@/components/SectionLabel'
 
 const COLUMNS = [
   {
@@ -37,9 +38,7 @@ export default function CannabisDomain() {
         }`}
       >
         <div className="mb-10">
-          <span className="text-teal font-mono text-sm font-medium tracking-wide uppercase">
-            Domain expertise
-          </span>
+          <SectionLabel>Domain expertise</SectionLabel>
           <h2 className="text-3xl sm:text-4xl font-bold text-white mt-2">
             Cannabis Industry Knowledge
           </h2>

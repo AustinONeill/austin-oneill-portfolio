@@ -46,6 +46,11 @@
   50%       { box-shadow: 0 0 0 5px rgba(20,184,166,0);  }
 }
 
+@keyframes label-wipe {
+  from { clip-path: inset(0 100% 0 0); opacity: 0; }
+  to   { clip-path: inset(0 0% 0 0);   opacity: 1; }
+}
+
 @keyframes gear-glow-pulse {
   0%, 100% { opacity: 0.3;  transform: scale(0.8);  }
   50%       { opacity: 1.0;  transform: scale(1.35); }

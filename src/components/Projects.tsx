@@ -1,6 +1,7 @@
 import { useInView } from '@/hooks/useInView'
 import { useState } from 'react'
 import ParticleBackground from './ParticleBackground'
+import SectionLabel from '@/components/SectionLabel'
 
 const SCREENSHOTS = [
   { src: '/canntycoon-dashboard.png', label: 'Dashboard' },
@@ -52,7 +53,7 @@ export default function Projects() {
     <section id="projects" className="section-padding">
       <div className="container-max">
         <div className="mb-12">
-          <span className="text-teal font-mono text-sm font-medium tracking-wide uppercase">Work</span>
+          <SectionLabel>Work</SectionLabel>
           <h2 className="text-3xl sm:text-4xl font-bold text-ink mt-2">Projects</h2>
         </div>
 

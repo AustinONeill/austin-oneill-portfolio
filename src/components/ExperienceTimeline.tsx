@@ -1,5 +1,6 @@
 import { useInView } from '@/hooks/useInView'
 import { useScrollProgress } from '@/hooks/useScrollProgress'
+import SectionLabel from '@/components/SectionLabel'
 
 interface Role {
   title: string
@@ -72,6 +73,19 @@ const ROLES: Role[] = [
 ]
 
 const IMG_COL = 220 // fixed image column width in px
+
+function TimelineLine() {
+  const [ref, progress] = useScrollProgress<HTMLDivElement>(0.05)
+  return (
+    <div ref={ref} className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 w-px pointer-events-none" style={{ height: '100%' }}>
+      <div className="w-full bg-teal/15 absolute inset-0" />
+      <div
+        className="w-full bg-teal/50 absolute top-0 transition-none"
+        style={{ height: `${progress * 100}%` }}
+      />
+    </div>
+  )
+}
 
 function RoleCard({ role }: { role: Role }) {
   const [textRef, textInView] = useInView<HTMLDivElement>({ threshold: 0.1 })
@@ -165,11 +179,12 @@ export default function ExperienceTimeline() {
     <section id="experience" className="section-padding overflow-hidden">
       <div className="container-max">
         <div className="mb-12">
-          <span className="text-teal font-mono text-sm font-medium tracking-wide uppercase">Career</span>
+          <SectionLabel>Career</SectionLabel>
           <h2 className="text-3xl sm:text-4xl font-bold text-ink mt-2">Experience</h2>
         </div>
 
-        <div>
+        <div className="relative">
+          <TimelineLine />
           {ROLES.map((role) => (
             <RoleCard key={`${role.company}-${role.period}`} role={role} />
           ))}

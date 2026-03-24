@@ -1,4 +1,5 @@
 import { useInView } from '@/hooks/useInView'
+import SectionLabel from '@/components/SectionLabel'
 
 const CERTS = [
   { name: 'CCNA', issuer: 'Cisco', year: '2024', color: 'text-blue-400', bg: 'bg-blue-50 border-blue-100' },
@@ -20,7 +21,7 @@ export default function EducationCerts() {
         }`}
       >
         <div className="mb-12">
-          <span className="text-teal font-mono text-sm font-medium tracking-wide uppercase">Background</span>
+          <SectionLabel>Background</SectionLabel>
           <h2 className="text-3xl sm:text-4xl font-bold text-ink mt-2">Education &amp; Certifications</h2>
         </div>
 

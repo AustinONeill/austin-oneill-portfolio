@@ -1,4 +1,5 @@
 import { useState, FormEvent } from 'react'
+import SectionLabel from '@/components/SectionLabel'
 
 type FormState = 'idle' | 'submitting' | 'success' | 'error'
 
@@ -42,7 +43,7 @@ export default function Contact() {
     <section id="contact" className="section-padding bg-surface-muted">
       <div className="container-max">
         <div className="mb-12">
-          <span className="text-teal font-mono text-sm font-medium tracking-wide uppercase">Get in touch</span>
+          <SectionLabel>Get in touch</SectionLabel>
           <h2 className="text-3xl sm:text-4xl font-bold text-ink mt-2">Let's Talk</h2>
           <p className="text-ink-muted mt-3 max-w-lg leading-relaxed">
             Interested in building more resilient cannabis facilities or internal tools?

@@ -1,6 +1,7 @@
 import { useInView } from '@/hooks/useInView'
 import { useScrollProgress } from '@/hooks/useScrollProgress'
 import AnimatedBorder from '@/components/AnimatedBorder'
+import SectionLabel from '@/components/SectionLabel'
 
 const PILLS = [
   'Environmental automation (Damatex)',
@@ -25,7 +26,7 @@ export default function HybridProfile() {
     <section id="profile" className="bg-surface-muted overflow-hidden py-20 sm:py-28">
 
       <div className="container-max mb-10">
-        <span className="text-teal font-mono text-sm font-medium tracking-wide uppercase">What I do</span>
+        <SectionLabel>What I do</SectionLabel>
         <h2 className="text-3xl sm:text-4xl font-bold text-ink mt-2">
           Controls &amp; Code — both sides of the floor
         </h2>

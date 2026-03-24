@@ -1,4 +1,5 @@
 import { useInView } from '@/hooks/useInView'
+import SectionLabel from '@/components/SectionLabel'
 
 interface SkillGroup {
   label: string
@@ -138,16 +139,21 @@ function SkillCard({ group, delay }: { group: SkillGroup; delay: number }) {
       </div>
 
       <div className="relative z-10 flex flex-wrap gap-2">
-        {group.skills.map((skill) => (
+        {group.skills.map((skill, i) => (
           <span
             key={skill}
-            className={`px-2.5 py-1 rounded-lg text-xs font-medium ${
+            className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-all duration-300 ${
               group.cannabis
                 ? 'bg-green-900/60 text-green-300 border border-green-700/40'
                 : group.accent
                 ? 'bg-teal/10 text-teal-light border border-teal/15'
                 : 'bg-surface border border-slate-150 text-ink-muted'
             }`}
+            style={{
+              opacity: isInView ? 1 : 0,
+              transform: isInView ? 'translateY(0)' : 'translateY(6px)',
+              transitionDelay: isInView ? `${200 + i * 40}ms` : '0ms',
+            }}
           >
             {skill}
           </span>
@@ -162,7 +168,7 @@ export default function SkillsStack() {
     <section id="skills" className="section-padding bg-surface-muted">
       <div className="container-max">
         <div className="mb-12">
-          <span className="text-teal font-mono text-sm font-medium tracking-wide uppercase">Capabilities</span>
+          <SectionLabel>Capabilities</SectionLabel>
           <h2 className="text-3xl sm:text-4xl font-bold text-ink mt-2">Skills &amp; Stack</h2>
           <p className="text-ink-muted mt-3 max-w-xl">
             What I work with day-to-day — across both software and the plant floor.

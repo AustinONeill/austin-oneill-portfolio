@@ -39,13 +39,15 @@ export default function Nav() {
             <a
               key={link.href}
               href={link.href}
-              className={`text-sm font-medium transition-colors hover:text-teal ${
-                isActive(link.href)
-                  ? 'text-teal'
-                  : 'text-ink-muted'
+              className={`relative text-sm font-medium transition-colors hover:text-teal ${
+                isActive(link.href) ? 'text-teal' : 'text-ink-muted'
               }`}
             >
               {link.label}
+              <span
+                className="absolute -bottom-1 left-0 h-0.5 bg-teal rounded-full transition-all duration-300 ease-out"
+                style={{ width: isActive(link.href) ? '100%' : '0%' }}
+              />
             </a>
           ))}
           <a
