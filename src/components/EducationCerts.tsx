@@ -24,7 +24,7 @@ export default function EducationCerts() {
           <h2 className="text-3xl sm:text-4xl font-bold text-ink mt-2">Education &amp; Certifications</h2>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 items-start">
+        <div className="grid md:grid-cols-2 gap-8 items-end">
           {/* Education card */}
           <div className="bg-surface-muted border border-slate-100 rounded-2xl p-6 hover:border-teal/20 transition-colors">
             <div className="flex items-start gap-4">
