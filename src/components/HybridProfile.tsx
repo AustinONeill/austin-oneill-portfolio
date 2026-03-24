@@ -3,12 +3,12 @@ import { useScrollProgress } from '@/hooks/useScrollProgress'
 import AnimatedBorder from '@/components/AnimatedBorder'
 
 const PILLS = [
-  'Environmental automation (Damatex)',
-  'Irrigation & fault detection',
-  'Internal dashboards & scripts (JS/TS/Python)',
-  'Production workflows & compliance (Health Canada)',
-  'IT infrastructure & facility support',
-  'Full-stack development (React, Node.js)',
+  'Cannabis plant lifecycle — seed to harvest',
+  'Environmental system solutions & diagnostics',
+  'Room automation',
+  'Lighting schedules (pre-veg, veg, flower)',
+  'Irrigation volume parameters and analysis',
+  'Hands-on defoliation, consistency insurance, transplanting',
 ]
 
 const CARD_W = 280
